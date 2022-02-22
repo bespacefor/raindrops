@@ -1,0 +1,376 @@
+/* COMMON STYLES */
+body {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 20px;
+}
+
+.header_visually-hidden {
+    position: absolute;
+    clip: rect(0 0 0 0);
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+}
+
+/* PLAY SCREEN */
+.playscreen {
+    display: flex;
+    justify-content: space-between;
+    height: 100vh;
+}
+
+.playscreen__field {
+    flex-grow: 5;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    background: url(../assets/img/back2.png) no-repeat center #D1F2EB;
+    background-size: cover;
+}
+
+/* GAME OVER */
+.gameoverscreen {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(255, 255, 255, .5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(1.2);
+    transition: 0.33s ease-out;
+}
+
+body.gameoverscreen_active .gameoverscreen{
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+}
+
+body.gameoverscreen_active .playscreen {
+    filter: blur(5px);
+}
+
+.gameoverscreen__overlay {
+    width: 50%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    border: 5px solid white;
+    border-radius: 25rem;
+    background-color: rgb(234, 236, 238, 0.8);
+}
+
+.gameoverscreen__overlay_end-message {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.gameoverscreen__overlay_restart-game {
+    font-size: 1.7rem;
+    font-weight: bold;
+    padding: 0.7rem;
+    border: 2px solid white;
+    background-color: #85C1E9;
+    transition: all 0.33s ease-in-out;
+}
+
+.gameoverscreen__overlay_restart-game:hover {
+    background-color: #154360;
+}
+
+.gameoverscreen__overlay_restart-game:active {
+    transform: scale(1.1);
+}
+
+/* DROPS */
+.playscreen__field_drop { 
+    background-color: #85C1E9;
+    border: 3px solid #5499C7;
+    border-radius: 50%;
+    padding: 1rem;
+    font-size: 1.7rem;
+    font-weight: bold;
+    color: white;
+    position: absolute;
+    top: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+}
+
+@keyframes fallingDrop {
+    0% {
+        top: 0;
+    }
+
+    100% {
+        top: 50%;
+    }
+}
+
+.playscreen__field_drop {
+    animation: fallingDrop 0.45s;
+}
+
+.operand1 {
+    position: relative;
+    top: 5%;
+    left: 10%;
+}
+
+.operator {
+    position: absolute;
+    top: 22%;
+    left: 7%;
+    font-size: 2.2rem;
+}
+
+.operand2 {
+    position: relative;
+    top: 5%;
+    left: 10%;
+}
+
+@keyframes showMatch {
+    50% {
+        color: green;
+        transform: scale(1.5);
+    }
+
+    100% {
+        color: black;
+        transform: scale(1);
+    }
+}
+
+.match {
+   animation: 0.45s showMatch;
+}
+
+@keyframes showMistake {
+    50% {
+        color: red;
+        transform: scale(1.5);
+    }
+
+    100% {
+        color: black;
+        transform: scale(1);
+    }
+}
+
+.mistake {
+   animation: 0.45s showMistake;
+}
+
+/* WAVES */
+.playscreen__field_waves {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.playscreen__field_waves > div {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: url('../assets/img/waves.png');
+    background-size: 1000px 100px;
+}
+
+@keyframes animate1 {
+    0% {
+        background-position-x: 0;
+    }
+
+    100% {
+        background-position-x: 1000px;
+    }
+}
+
+.waves__wave1 {
+    animation: animate1 30s linear infinite;
+    z-index: 1000;
+    opacity: 1;
+    animation-delay: 0s;
+    bottom: 0;
+}
+
+@keyframes animate2 {
+    0% {
+        background-position-x: 0;
+    }
+
+    100% {
+        background-position-x: -1000px;
+    }
+}
+
+.waves__wave2 {
+    animation: animate2 15s linear infinite;
+    z-index: 999;
+    opacity: 0.2;
+    animation-delay: -2s;
+    bottom: 10px;
+}
+
+@keyframes animate3 {
+    0% {
+        background-position-x: 0;
+    }
+
+    100% {
+        background-position-x: -1000px;
+    }
+}
+
+.waves__wave3 {
+    animation: animate3 5s linear infinite;
+    z-index: 998;
+    opacity: 0.7;
+    animation-delay: -7s;
+    bottom: 30px;
+}
+
+/* GAME INFO */
+.playscreen__panel {
+    flex-grow: 0.5;
+    background: #AED6F1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.playscreen__panel_info {
+    text-align: center;
+    border: 2px solid white;
+    border-radius: 0 0 45% 45%;
+    width: 90%;
+    background: #EAECEE;
+}
+
+.info__score_icon, .info__lives_icon {
+    height: 1.3rem;
+    width: 1.3rem;
+}
+
+.info__score_board, .info__lives_board {
+    color: #154360;
+}
+
+/* GAME KEYBOARD */
+.playscreen__panel_controls {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    outline: 5px solid #F6DDCC;
+    box-shadow: 5px 5px 10px;
+}
+
+.controls__display {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    width: 99%;
+}
+
+.controls__display_input {
+    text-align: center;
+    background-color: #EAECEE;
+    color: #154360;
+    font-size: 3.5rem;
+    font-weight: bold;
+    height: 100%;
+    width: 99%;
+    border: 1px solid grey;
+}
+
+/* GAME KEYBOARD BUTTONS */
+.controls__keyboard {
+    display: grid;
+    grid-template-rows: repeat(4, 1fr);
+    grid-template-columns: repeat(4, 1fr);
+    user-select: none;
+}
+
+[data-action="clear"], [data-action="enter"] {
+    grid-row: span 2;
+}
+
+[data-action="delete"] {
+    grid-column: span 2;
+}
+
+.controls__keyboard_number {
+    font-size: 2rem;
+    font-weight: bold;
+    background-color: white;
+}
+
+.controls__keyboard_action {
+    font-size: 0.9rem;
+    font-weight: bold;
+    background-color: #EAECEE;
+}
+
+/* GAME KEYBOARD ACTIVE BUTTONS */
+.controls__keyboard > button {
+    border: 1px solid grey;
+    cursor: pointer;
+}
+
+.controls__keyboard > button:active {
+    transform: scale(1.1);
+    box-shadow: 0 0 0.5rem #154360;
+    transition: 0.3s ease-out;
+}
+
+/* GAME MENU */
+.playscreen__panel_menu {
+    width: 90%;
+    height: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background: #EAECEE;
+    border: 2px solid white;
+}
+
+.playscreen__panel_menu > button {
+    border: 2px solid grey;
+    border-radius: 5px;
+    background-color: white;
+    width: 45px;
+    height: 45px;
+    padding: 5px;
+}
+
+.playscreen__panel_menu > button:hover {
+    background-color: #154360;
+    border: 2px solid white;
+    transition: 0.5s ease-out;
+}
+
+.playscreen__panel_menu > button:active {
+    border: 2px solid white;
+    transform: scale(1.2);
+    transition: 0.3s ease-out;
+}
