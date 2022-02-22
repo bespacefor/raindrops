@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raindrops</title>
+    <link rel="stylesheet" href="../styles/play.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link rel="icon" href="../assets/icons/favicon.png" type="image/png" sizes="32x32">
+</head>
+<body>
+    <header>
+        <h1 class="header_visually-hidden">Raindrops</h1>
+    </header>
+    <main>
+        <div class="playscreen">
+            <div class="playscreen__field">
+                <div class="playscreen__field_drop">
+                    <span class="operand1"></span>
+                    <span class="operator"></span>
+                    <span class="operand2"></span>
+                    <audio class="drop__answer_wrong" src="../assets/audio/wrong2.mp3"></audio>
+                    <audio class="drop__answer_correct" src="../assets/audio/correct1.mp3"></audio>
+                </div>
+                <div class="playscreen__field_waves">
+                    <div class="waves__wave1"></div>
+                    <div class="waves__wave2"></div>
+                    <div class="waves__wave3"></div>
+                </div>
+            </div>
+            <div class="playscreen__panel">
+                <div class="playscreen__panel_info">
+                    <h3 class="info__score_title">
+                        <img class="info__score_icon" src="../assets/icons/star.png" alt="star"> Score: 
+                        <span class="info__score_board">5</span>
+                    </h3>
+                    <h3 class="info__lives_title">
+                        <img class="info__lives_icon" src="../assets/icons/heart.png" alt="heart"> Lives: 
+                        <span class="info__lives_board">3</span>
+                    </h3>
+                    <audio class="info__sound_win" src="../assets/audio/win1.mp3"></audio>
+                    <audio class="info__sound_loser" src="../assets/audio/loser2.mp3"></audio>
+                </div>
+                <div class="playscreen__panel_controls">
+                    <div class="controls__display">
+                        <input type="text" class="controls__display_input" disabled value="" size="4" autocomplete="off">
+                    </div>
+                    <div class="controls__keyboard">
+                        <button data-number="7" class="controls__keyboard_number">7</button>
+                        <button data-number="8" class="controls__keyboard_number">8</button>
+                        <button data-number="9" class="controls__keyboard_number">9</button>
+                        <button data-action="clear" class="controls__keyboard_action">Clear</button>
+                        <button data-number="4" class="controls__keyboard_number">4</button>
+                        <button data-number="5" class="controls__keyboard_number">5</button>
+                        <button data-number="6" class="controls__keyboard_number">6</button>
+                        <button data-number="1" class="controls__keyboard_number">1</button>
+                        <button data-number="2" class="controls__keyboard_number">2</button>
+                        <button data-number="3" class="controls__keyboard_number">3</button>
+                        <button data-action="enter" class="controls__keyboard_action">Enter</button>
+                        <button data-number="0" class="controls__keyboard_number">0</button>
+                        <button data-action="delete" class="controls__keyboard_action">Delete</button>
+                    </div>
+                </div>
+                <div class="playscreen__panel_menu">
+                    <button class="menu__button_exit">
+                        <img src="../assets/icons/back.png" alt="exit">
+                    </button>
+                    <button class="menu__button_sound">
+                        <audio loop class="sound__waves_on" src="../assets/audio/waves.mp3"></audio>
+                        <img class="sound__waves_icon" src="../assets/icons/audio-off.png" alt="audio">
+                    </button>
+                    <button class="menu__button_fullscreen">
+                        <img src="../assets/icons/fullscreen.png" alt="fullscreen">
+                    </button>
+                    <button class="menu__button_settings">
+                        <img src="../assets/icons/progress.png" alt="settings">
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="gameoverscreen">
+            <div class="gameoverscreen__overlay">
+                <p class="gameoverscreen__overlay_end-message"></p>
+                <button class="gameoverscreen__overlay_restart-game">Try Again</button>
+            </div>
+        </div>
+    </main>
+    <script src="../js/play.js"></script>
+</body>
+</html>
